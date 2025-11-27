@@ -1,5 +1,7 @@
 # Medical-Tool-Interface-AF
 
+![Example image](assets/example.png)
+
 ## Overview
 This project provides a simple Dash-based graphical interface for generating medical predictions.  
 Users can input patient data into the form and receive model outputs along with interactive visualizations.  
