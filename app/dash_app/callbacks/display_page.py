@@ -62,7 +62,7 @@ def register(app):
 
                 html.Div(
                     html.Img(
-                        src="/assets/ist_logo.png",
+                        src="/assets/images/ist_logo.png",
                         height="50px"
                     ),
                     className="d-flex justify-content-center",

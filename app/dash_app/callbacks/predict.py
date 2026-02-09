@@ -1,21 +1,25 @@
-import requests
 import pandas as pd
 from dash import Input, Output, State, dcc, html
 import dash_bootstrap_components as dbc
 import plotly.express as px
 import plotly.graph_objects as go
+
 from app.config import DATA_DIR
+from app.api.routes import get_model, feature_names
+
 
 def register(app):
 
-    # load data for plots
+    # Load data for plots
     data_path = DATA_DIR / "data.csv"
     data = pd.read_csv(data_path)
 
     @app.callback(
-        [Output("prediction-output", "children"),
-        Output("prediction-plot", "figure"),
-        Output("prediction-plot-2", "figure")],
+        [
+            Output("prediction-output", "children"),
+            Output("prediction-plot", "figure"),
+            Output("prediction-plot-2", "figure")
+        ],
         Input("calcular-btn", "n_clicks"),
         State("input-age", "value"),
         State("input-sex", "value"),
@@ -31,7 +35,9 @@ def register(app):
         State("input-t1d", "value"),
         prevent_initial_call=True
     )
-    def predict(n_clicks, age, sex, wgt, hgt, bmi, sbp, dbp, hdl, ldl, hf, smk_cur, t1d):
+    def predict_callback(
+        n_clicks, age, sex, wgt, hgt, bmi, sbp, dbp, hdl, ldl, hf, smk_cur, t1d
+    ):
         inputs_dict = {
             "age": age,
             "sex": sex,
@@ -47,23 +53,33 @@ def register(app):
             "t1d": t1d
         }
 
+        # Check for missing inputs
         if any(value is None for value in inputs_dict.values()):
             return dbc.Alert("Please fill in all fields.", color="warning"), {}, {}
 
-        # Call API
-        res = requests.post("http://127.0.0.1:8000/predict", json=inputs_dict)
-        if res.status_code != 200:
-            return dbc.Alert("Error: Could not connect to prediction API.", color="danger"), {}, {}
-
-        api_result = res.json()
-        prediction = api_result["prediction"]
-        probability = api_result["probability"]
+        # --- Call model directly ---
+        try:
+            model = get_model()
+            features = pd.DataFrame(
+                [[inputs_dict[col] for col in feature_names]],
+                columns=feature_names
+            )
+            prediction = int(model.predict(features)[0])
+            probability = float(model.predict_proba(features)[0][1])
+        except Exception as e:
+            return dbc.Alert(f"Prediction error: {e}", color="danger"), {}, {}
 
         # Message
         if prediction == 1:
-            message = dbc.Alert(f"Result: Cardiovascular event likely ({probability:.1%} confidence)", color="danger")
+            message = dbc.Alert(
+                f"Result: Cardiovascular event likely ({probability:.1%} confidence)",
+                color="danger"
+            )
         else:
-            message = dbc.Alert(f"Result: Low risk of cardiovascular event ({1-probability:.1%} confidence)", color="success")
+            message = dbc.Alert(
+                f"Result: Low risk of cardiovascular event ({1-probability:.1%} confidence)",
+                color="success"
+            )
 
         # --- Plots ---
         data["cv_event"] = data["y_cvdeath_6_months"].map({0: "No Event", 1: "Event"})
@@ -81,11 +97,10 @@ def register(app):
         data_plot = data.copy()
         data_plot["age"] = data_plot["age"].map(age_labels)
         data_plot["age"] = pd.Categorical(
-            data_plot["age"], 
-            categories=age_labels_order, 
+            data_plot["age"],
+            categories=age_labels_order,
             ordered=True
         )
-
 
         fig1 = px.scatter(
             data_plot, x="bmi", y="age", color="cv_event",
@@ -117,9 +132,8 @@ def register(app):
         fig1.update_layout(
             autosize=True,
             margin=dict(l=40, r=40, t=40, b=40),
-            height=400  # optional fixed height
+            height=400
         )
-
         fig2.update_layout(
             autosize=True,
             margin=dict(l=40, r=40, t=40, b=40),
