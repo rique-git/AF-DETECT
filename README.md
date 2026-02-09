@@ -1,4 +1,4 @@
-# Medical-Tool-Interface-AF
+# AF-DETECT
 
 <p float="left">
   <img src="images/logo.jpg" width="200" />
