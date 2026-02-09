@@ -6,7 +6,7 @@ navbar = dbc.Navbar(
         # Left: Logo or App Name
         html.A(
             dbc.Row([
-                dbc.Col(html.Img(src="/assets/logo.png", height="30px")),  # You can put your logo in /assets
+                dbc.Col(html.Img(src="/assets/images/logo.jpg", height="30px")),  # You can put your logo in /assets
             ], align="center", className="g-0"),
             href="#",
             style={"textDecoration": "none"}
@@ -19,7 +19,7 @@ navbar = dbc.Navbar(
             dbc.NavItem(dbc.NavLink("FAQs", href="/ajuda")),
         ], className="mx-auto", navbar=True),
 
-        # Right: Language or login (optional)
+        # Right: Language or login
         dbc.Nav([
             dbc.NavItem(dbc.NavLink("PT", href="#")),
         ], navbar=True),
