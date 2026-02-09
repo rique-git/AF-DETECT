@@ -75,6 +75,7 @@ docker-compose.override.yml
 # app/data/*.csv
 # app/data/*.pkl
 # app/data/*.joblib
+data_real.csv
 
 # =========================
 # Temporary files
