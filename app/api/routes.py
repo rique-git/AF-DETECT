@@ -4,12 +4,9 @@ import joblib
 import pandas as pd
 import xgboost as xgb
 
-from app.config import DATA_DIR
+from app.config import MODEL_PATH
 
 
-
-
-MODEL_PATH = DATA_DIR / "model.json"
 _model = None
 
 feature_names = [
@@ -18,10 +15,7 @@ feature_names = [
 ]
 
 def get_model():
-    """
-    Lazy-loads the XGBoost model from JSON.
-    Ensures the model is loaded only once, shared by API and Dash callbacks.
-    """
+
     global _model
     if _model is None:
         _model = xgb.XGBClassifier()

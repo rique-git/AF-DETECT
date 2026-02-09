@@ -4,6 +4,8 @@ from starlette.middleware.wsgi import WSGIMiddleware
 from app.api import router
 from app.dash_app.app import create_dash_app
 
+from app.config import PORT, DEBUG
+
 
 def create_app():
 
@@ -34,6 +36,6 @@ if __name__ == "__main__":
     uvicorn.run(
         "app.main:app",
         host="0.0.0.0",
-        port=8050,
+        port=PORT,
         reload=True
     )
