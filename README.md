@@ -83,7 +83,7 @@ Enter patient data, submit the form, and view predictions and visualizations in 
 
 - AF DETECT is developed and maintained at Insituto Superior Técnico, Universidade de Lisboa.
 
-*Authors:* Henrique Anjos(https://github.com/rique-git), [Rafael Costa](https://github.com/r-costa), [Rui Henriques](http://web.ist.utl.pt/rmch/)
+*Authors:* [Henrique Anjos](https://github.com/rique-git), [Rafael Costa](https://github.com/r-costa), [Rui Henriques](http://web.ist.utl.pt/rmch/)
 
 
 <p float="left">
