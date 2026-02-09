@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from starlette.middleware.wsgi import WSGIMiddleware
+from a2wsgi import WSGIMiddleware
 
 from app.api import router
 from app.dash_app.app import create_dash_app
