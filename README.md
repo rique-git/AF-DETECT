@@ -21,7 +21,7 @@ This tool is currently an in-development prototype intended for use in test sett
 app/
 ├─ dash_app/ # Dash frontend components, layouts, and callbacks
 ├─ api/ # FastAPI endpoints and model loading
-├─ data/ # Model and CSV data
+├─ data/ # Model and CSV data (synthetic data)
 ├─ config.py # Project paths and configuration
 ├─ main.py # Entrypoint: runs Dash + FastAPI
 Makefile
