@@ -2,14 +2,15 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 import joblib
 import pandas as pd
+import xgboost as xgb
 
 from app.config import DATA_DIR
 
 
 
 
-MODEL_PATH = DATA_DIR / "best_xgb_model.pkl"
-_model = None  # internal
+MODEL_PATH = DATA_DIR / "model.json"
+_model = None
 
 feature_names = [
     'bmi', 'dbp', 'hdl', 'hf', 'hgt',
@@ -17,9 +18,14 @@ feature_names = [
 ]
 
 def get_model():
+    """
+    Lazy-loads the XGBoost model from JSON.
+    Ensures the model is loaded only once, shared by API and Dash callbacks.
+    """
     global _model
     if _model is None:
-        _model = joblib.load(MODEL_PATH)
+        _model = xgb.XGBClassifier()
+        _model.load_model(MODEL_PATH)
     return _model
 
 
