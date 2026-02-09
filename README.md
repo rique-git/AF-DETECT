@@ -86,7 +86,6 @@ Enter patient data, submit the form, and view predictions and visualizations in 
 *Authors:* [Henrique Anjos](https://github.com/rique-git), [Rafael Costa](https://github.com/r-costa), [Rui Henriques](http://web.ist.utl.pt/rmch/)
 
 
-<p float="left">
-  <img src="images/ist_logo.png" width="200" style="margin-right: 50px" />
-  <img src="images/logo.jpg" width="240" />
-</p>
+<img src="images/ist_logo.png" width="200" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="images/logo.jpg" width="240" />
+
