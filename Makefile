@@ -1,12 +1,10 @@
 .PHONY: run docker
 
-PORT ?= 8050
-DEBUG ?= 1
-
 run:
-	@echo "Running Dash + FastAPI on port $(PORT)..."
+	@echo "Running Dash + FastAPI..."
 	python3 -m app.main
 
-#docker:
-#	docker build -t af-detect .
-#	docker run -p $(PORT):8050 af-detect
+docker:
+	@echo "Building and running Docker container..."
+	docker build -t af-detect .
+	docker run -p 8050:8050 af-detect
