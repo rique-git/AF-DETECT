@@ -1,39 +1,92 @@
 # Medical-Tool-Interface-AF
 
-![Example image](assets/example.png)
+<p float="left">
+  <img src="images/logo.jpg" width="200" />
+</p>
+
+![Interface1](images/interface_1.png)
+![Interface2](images/interface_2.png)
 
 ## Overview
-This project provides a simple Dash-based graphical interface for generating medical predictions.  
-Users can input patient data into the form and receive model outputs along with interactive visualizations.  
-Currently, the tool supports **cardiovascular death prediction**.
+This project provides a Dash-based interface for generating medical predictions, specifically cardiovascular death risk in patients with atrial fibrillation.
 
-The GUI communicates with a separate backend API. This separation allows you to update the interface, layout, or visualizations without altering the model logic.
+Users can input patient data into the web form and receive model outputs along with interactive visualizations.
 
-## How to Run
+The project uses a unified containerized app: Dash for the frontend, and FastAPI for the prediction backend, all running in the same Python process.
 
-### 1. Clone the repository
-```bash
-git clone <your-repo-url>
-cd <your-project-directory>
+This tool is currently an in-development prototype intended for use in test settings and should not be relied upon for definitive clinical decisions.
+
+## Project Structure
+```
+app/
+├─ dash_app/ # Dash frontend components, layouts, and callbacks
+├─ api/ # FastAPI endpoints and model loading
+├─ data/ # Model and CSV data
+├─ config.py # Project paths and configuration
+├─ main.py # Entrypoint: runs Dash + FastAPI
+Makefile
+requirements.txt
+Dockerfile
+README.md
 ```
 
-### 2. Start the backend API
+
+## Requirements
+
+- Python 3.10+
+- Docker (optional, recommended)
+- Packages listed in `requirements.txt`
+
+## Quick Start (Makefile + Docker)
+
+You can build and run the entire app (Dash + FastAPI) with a single Makefile command:
+
 ```bash
-univorn api:app -reload
+make docker
 ```
 
-### 3. Launch the GUI
-On another terminal
-```bash
-python3 app_v1.py
+This will:
+1. Build the Docker image
+2. Run the container on port 8050
+3. Make the app available at 
+```ccp
+http://127.0.0.1:8050/
 ```
 
-### 4. Acess the app
+⚠️ Performance Note: Docker deployment may be 20-50% slower than running Python locally, especially on Windows/Mac, due to virtualization overhead and I/O operations. This is normal and expected. For maximum performance during development, consider using Option 2 (Full Python Project).
+
+
+## Running Locally (without Docker)
+
+1. **Install dependencies**:
+
+```bash
+pip install -r requirements.txt
+```
+
+2. **Run the app**:
+
+```bash
+make run
+```
+
+3. **Acess the app**:
 Open your browser at:
 ```ccp
-http://127.0.0.1:8051/
+http://127.0.0.1:8050/
 ```
 
 Enter patient data, submit the form, and view predictions and visualizations in real time.
 
-Any questions contact the repository owner.
+
+## Developed at
+
+- AF DETECT is developed and maintained at Insituto Superior Técnico, Universidade de Lisboa.
+
+*Authors:* Henrique Anjos, [Rafael Costa](https://github.com/r-costa), [Rui Henriques](http://web.ist.utl.pt/rmch/)
+
+
+<p float="left">
+  <img src="images/ist_logo.png" width="200" style="margin-right: 50px" />
+  <img src="images/logo.jpg" width="240" />
+</p>
