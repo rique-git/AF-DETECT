@@ -81,11 +81,10 @@ Enter patient data, submit the form, and view predictions and visualizations in 
 
 ## Developed at
 
-- AF DETECT is developed and maintained at Insituto Superior Técnico, Universidade de Lisboa.
+- AF DETECT is developed and maintained at NOVA-FCT and IST, Universidade de Lisboa.
 
 *Authors:* [Henrique Anjos](https://github.com/rique-git), [Rafael Costa](https://github.com/r-costa), [Rui Henriques](http://web.ist.utl.pt/rmch/)
 
 
-<img src="images/ist_logo.png" width="200" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="images/logo.jpg" width="240" />
 
