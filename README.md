@@ -8,7 +8,7 @@
 ![Interface2](images/interface_2.png)
 
 ## Overview
-This project provides a Dash-based interface for generating medical predictions, specifically cardiovascular death risk in patients with atrial fibrillation.
+This project provides the AF-DETECT tool (implemented in an open-source Python package) for generating medical predictions, specifically cardiovascular death risk in patients with atrial fibrillation (AF).
 
 Users can input patient data into the web form and receive model outputs along with interactive visualizations.
 
@@ -81,7 +81,7 @@ Enter patient data, submit the form, and view predictions and visualizations in 
 
 ## Developed at
 
-- AF DETECT is developed and maintained at NOVA-FCT and IST, Universidade de Lisboa.
+- AF DETECT tool is developed and maintained at NOVA-FCT and IST, Universidade de Lisboa.
 
 *Authors:* [Henrique Anjos](https://github.com/rique-git), [Rafael Costa](https://github.com/r-costa), [Rui Henriques](http://web.ist.utl.pt/rmch/)
 
