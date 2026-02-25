@@ -4,9 +4,6 @@
   <img src="images/logo.jpg" width="200" />
 </p>
 
-![Interface1](images/interface_1.png)
-![Interface2](images/interface_2.png)
-
 ## Overview
 This project provides the AF-DETECT tool (implemented in an open-source Python package) for generating medical predictions, specifically cardiovascular death risk in patients with atrial fibrillation (AF).
 
@@ -15,6 +12,10 @@ Users can input patient data into the web form and receive model outputs along w
 The project uses a unified containerized app: Dash for the frontend, and FastAPI for the prediction backend, all running in the same Python process.
 
 This tool is currently an in-development prototype intended for use in test settings and should not be relied upon for definitive clinical decisions.
+
+![Interface1](images/interface_1.png)
+![Interface2](images/interface_2.png)
+
 
 ## Project Structure
 ```
